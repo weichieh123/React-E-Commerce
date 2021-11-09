@@ -4,7 +4,7 @@ import Product from './Product/Product'
 import useStyles from './styles'
 
 const products = [
-    { id: 1, name: 'Hamburger', info: 'Hamburger with bacon and tomato.', price: '$5', image: '/static/images/Product/Food-01.svg'},
+    { id: 1, name: 'Hamburger', info: 'Hamburger with bacon and tomato.', price: '$5', image: '/static/images/Product/Food Icons-01.svg'},
     { id: 2, name: 'Spaghetti', info: 'Spaghetti Carbonara.', price: '$10', image: '/static/images/Product/Food Icons-02.svg'},
 ]
 
