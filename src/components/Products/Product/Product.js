@@ -7,7 +7,7 @@ function Product({product, onAddToCart}) {
     const classes = useStyles()
     return (
         <Card className={classes.root}>
-            <CardMedia className={classes.media} image={ product.image.url} title={product.name} />
+            <CardMedia className={classes.media} image={product.image.url} title={product.name} />
             <CardContent>
                 <div className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">

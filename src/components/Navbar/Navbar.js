@@ -12,9 +12,9 @@ function Navbar({totalItems}) {
                 <Toolbar>
                     <Typography variant="h6" className={classes.title} color="inherit">
                         <img src={logo} alt="Commerce.js" height="25px" className={classes.image} />
-                        Commerce.js
+                        Wei's
                     </Typography>
-                    <div className={classes.grow}></div>
+                    <div className={classes.grow} />
                     <div className={classes.button}>
                         <IconButton aria-label="Show cart item" color="inherit">
                             <Badge badgeContent={totalItems} color="secondary">
