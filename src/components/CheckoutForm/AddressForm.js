@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { InputLabel, Select, MenuItem, Button, Grid, Typography } from '@material-ui/core'
 import { useForm, FormProvider } from 'react-hook-form'
 import FormInput from './FormInput'
 import { commerce } from '../../lib/commerce'
 
-function AddressForm({ checkoutToken }) {
+function AddressForm({ checkoutToken, next }) {
     const [shippingCountries, setShippingCountries] = useState([])
     const [shippingCountry, setShippingCountry] = useState('')
     const [shippingSubdivisions, setShippingSubdivisions] = useState([])
@@ -46,6 +47,7 @@ function AddressForm({ checkoutToken }) {
 
     useEffect(() => {
         fetchShippingCountries(checkoutToken.id)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
@@ -54,13 +56,14 @@ function AddressForm({ checkoutToken }) {
 
     useEffect(() => {
         if(shippingSubdivision) fetchShippingOptions(checkoutToken.id, shippingCountry, shippingSubdivision)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [shippingSubdivision])
 
     return (
         <>
            <Typography variant="h6" gutterBottom>Shipping Address</Typography> 
            <FormProvider {...methods}>
-                <form onSubmit=''>
+                <form onSubmit={methods.handleSubmit((data)=> next({...data, shippingCountry, shippingSubdivision, shippingOption}))}>
                     <Grid container spacing={3}>
                         <FormInput name="firstName" label="First Name" />
                         <FormInput name="lastName" label="Last Name" />
@@ -99,6 +102,11 @@ function AddressForm({ checkoutToken }) {
                             </Select>
                         </Grid>
                     </Grid>
+                    <br />
+                    <div style={{ display: 'flex', justifyContent: 'space-between'}}>
+                        <Button component={Link} to="/cart" variant="outlined">Back to Cart</Button>
+                        <Button type="submit" variant="contained" color="primary">Next</Button>
+                    </div>
                 </form>
            </FormProvider>
         </>
